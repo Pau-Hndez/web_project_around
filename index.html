@@ -7,14 +7,146 @@
     <meta name="description" content="Alrededor de los EE.UU." />
     <meta name="author" content="Paula Hernandez" />
     <meta name="keywords" content="Alrededor de los EE.UU." />
-    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="icon" href=" " />
   </head>
   <body>
     <div class="page">
-      <header class="header"></header>
-      <main class="content"></main>
-      <footer class="footer"></footer>
+      <header class="header">
+        <img src="./images/header.png" alt="Around the U.S." />
+        <hr class="header__line" />
+      </header>
+      <main class="content">
+        <section class="content__profile">
+          <img
+            class="content__profile content__profile_picture"
+            src="./images/profile_picture.jpg"
+            alt="Foto de perfil"
+          />
+          <div class="content__profile content__profile_description">
+            <h1 class="content__profile_description_name">Jacques Cousteau</h1>
+            <button
+              class="content__profile_description_edit-button"
+              type="button"
+            ></button>
+            <p class="content__profile_description_about-me">Explorador</p>
+          </div>
+          <button class="content__profile_add-button" type="button"></button>
+        </section>
+        <section class="content__places">
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Valle de Yosemite"
+              src="./images/Valle de yosemite.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">Valle de Yosemite</h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Lago Louise"
+              src="./images/Lago Louise.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">Lago Louise</h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Montañas Calvas"
+              src="./images/Montañas Calvas.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">Montañas Calvas</h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Latemar"
+              src="./images/Latemar.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">Latemar</h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Vanois National..."
+              src="./images/Vanois.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">
+                Vanois National...
+              </h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+          <li class="content__places content__places_card">
+            <img
+              class="content__places_card_picture"
+              alt="Lago di Braies"
+              src="./images/Lago di Braies.jpg"
+            />
+            <div class="content__places_card_name">
+              <h2 class="content__places_card_name_title">Lago di Braies</h2>
+              <button
+                class="content__places_card_name_like-button"
+                type="button"
+              ></button>
+            </div>
+          </li>
+        </section>
+      </main>
+      <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
+    <div class="modal__content">
+      <button
+        aria-label="close modal"
+        class="modal__close"
+        type="button"
+      ></button>
+      <h3 class="modal__title">Editar perfil</h3>
+      <form class="modal__form" id="edit-profile-form">
+        <input
+          class="modal__input modal__input_type_name"
+          name="name"
+          placeholder="Nombre"
+          type="text"
+        />
+        <input
+          class="modal__input modal__input_type_description"
+          name="description"
+          placeholder="Acerca de mí"
+          type="text"
+        />
+        <button class="button_modal__button" type="submit">Guardar</button>
+      </form>
+    </div>
+    <script src="./scripts/script.js"></script>
   </body>
 </html>

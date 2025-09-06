@@ -1,0 +1,11 @@
+.header {
+  max-width: 880px;
+  height: 74px;
+  padding: 45px 200px 40px;
+}
+.header__line {
+  color: #545454;
+  opacity: 70%;
+  width: 880px;
+  margin-top: 41px;
+}
