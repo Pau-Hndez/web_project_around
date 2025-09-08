@@ -4,3 +4,42 @@
   background-color: #ffffff;
   font-family: "Inter";
 }
+.modal__close {
+  background-image: url(../images/Close\ Icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: black;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  display: flex;
+  justify-content: flex-end;
+}
+.modal__title {
+  font-weight: 900;
+  font-size: 24px;
+  margin: 36px auto 54px 36px;
+}
+.modal__input {
+  width: 358px;
+  height: 27.26px;
+  color: #c4c4c4;
+  border: none;
+  border-bottom: 1px;
+  border-color: #000000;
+  margin: auto auto 29px 36px;
+  font-weight: 400;
+  font-size: 14px;
+}
+.modal__save {
+  width: 358px;
+  height: 50.15px;
+  border-radius: 2px;
+  color: #c4c4c4;
+  border-color: #c4c4c4;
+  background-color: #ffffff;
+  font-weight: 400;
+  font-size: 18px;
+  box-shadow: none;
+  margin: 11px 36px 36px;
+}
