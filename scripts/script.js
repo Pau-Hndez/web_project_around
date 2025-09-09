@@ -3,14 +3,14 @@ const modal = document.querySelector(".modal");
 const profileFormElement = document.querySelector(".modal__form");
 
 const profileEditButton = document.querySelector(
-  ".content__profile_description_edit-button"
+  ".content__profile_info_description_edit-button"
 );
 const modalCloseButton = document.querySelector(".modal__close");
 const profileTitle = document.querySelector(
-  ".content__profile_description_name"
+  ".content__profile_info_description_name"
 );
 const profileDescription = document.querySelector(
-  ".content__profile_description_about-me"
+  ".content__profile_info_description_about-me"
 );
 
 const nameInput = profileFormElement.querySelector(".modal__input_type_name");
@@ -35,6 +35,7 @@ function openModal() {
   modal.classList.add("modal_is-opened");
   updateButtonColor();
 }
+
 function handleProfileFormSubmit(evt) {
   console.log(evt.preventDefault(), "Form submission prevented");
   profileTitle.textContent = nameInput.value;

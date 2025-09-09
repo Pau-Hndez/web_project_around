@@ -13,23 +13,33 @@
   <body>
     <div class="page">
       <header class="header">
-        <img src="./images/header.png" alt="Around the U.S." />
+        <img
+          class="header__picture"
+          src="./images/header.png"
+          alt="Around the U.S."
+        />
         <hr class="header__line" />
       </header>
       <main class="content">
         <section class="content__profile">
-          <img
-            class="content__profile content__profile_picture"
-            src="./images/profile_picture.jpg"
-            alt="Foto de perfil"
-          />
-          <div class="content__profile content__profile_description">
-            <h1 class="content__profile_description_name">Jacques Cousteau</h1>
-            <button
-              class="content__profile_description_edit-button"
-              type="button"
-            ></button>
-            <p class="content__profile_description_about-me">Explorador</p>
+          <div class="content__profile content__profile_info">
+            <img
+              class="content__profile_info_picture"
+              src="./images/profile_picture.jpg"
+              alt="Foto de perfil"
+            />
+            <div class="content__profile_info_description">
+              <h1 class="content__profile_info_description_name">
+                Jacques Cousteau
+              </h1>
+              <button
+                class="content__profile_info_description_edit-button"
+                type="button"
+              ></button>
+              <p class="content__profile_info_description_about-me">
+                Explorador
+              </p>
+            </div>
           </div>
           <button class="content__profile_add-button" type="button"></button>
         </section>
@@ -124,28 +134,30 @@
       </main>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
-    <div class="modal__content">
-      <button
-        aria-label="close modal"
-        class="modal__close"
-        type="button"
-      ></button>
-      <h3 class="modal__title">Editar perfil</h3>
-      <form class="modal__form" id="edit-profile-form">
-        <input
-          class="modal__input modal__input_type_name"
-          name="name"
-          placeholder="Nombre"
-          type="text"
-        />
-        <input
-          class="modal__input modal__input_type_description"
-          name="description"
-          placeholder="Acerca de mí"
-          type="text"
-        />
-        <button class="modal__save" type="submit">Guardar</button>
-      </form>
+    <div class="modal">
+      <div class="modal__content">
+        <button
+          aria-label="close modal"
+          class="modal__close"
+          type="button"
+        ></button>
+        <h3 class="modal__title">Editar perfil</h3>
+        <form class="modal__form" id="edit-profile-form">
+          <input
+            class="modal__input modal__input_type_name"
+            name="name"
+            placeholder="Nombre"
+            type="text"
+          />
+          <input
+            class="modal__input modal__input_type_description"
+            name="description"
+            placeholder="Acerca de mí"
+            type="text"
+          />
+          <button class="modal__save" type="submit">Guardar</button>
+        </form>
+      </div>
     </div>
     <script src="./scripts/script.js"></script>
   </body>

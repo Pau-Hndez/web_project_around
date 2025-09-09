@@ -1,35 +1,78 @@
+.modal {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+.modal_is-opened {
+  display: flex;
+}
 .modal__content {
-  width: 430px;
+  max-width: 430px;
+  width: 100%;
   height: 330px;
   background-color: #ffffff;
+  border-radius: 10px;
+  position: relative;
+  box-sizing: border-box;
+  padding: 34px 36px;
   font-family: "Inter";
 }
 .modal__close {
   background-image: url(../images/Close\ Icon.png);
   background-size: contain;
   background-repeat: no-repeat;
-  background-color: black;
+  background-color: transparent;
   width: 40px;
   height: 40px;
   border-style: none;
-  display: flex;
-  justify-content: flex-end;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.modal__close:hover {
+  background-image: url(../images/Close\ Icon\ -\ hover.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
 }
 .modal__title {
   font-weight: 900;
   font-size: 24px;
-  margin: 36px auto 54px 36px;
+  margin: 0;
+  padding-bottom: 54px;
 }
 .modal__input {
   width: 358px;
   height: 27.26px;
-  color: #c4c4c4;
   border: none;
   border-bottom: 1px;
   border-color: #000000;
-  margin: auto auto 29px 36px;
   font-weight: 400;
   font-size: 14px;
+}
+.modal__input_type_name {
+  margin-bottom: 29px;
+}
+.modal__input_type_description {
+  margin-bottom: 48px;
 }
 .modal__save {
   width: 358px;
@@ -41,5 +84,41 @@
   font-weight: 400;
   font-size: 18px;
   box-shadow: none;
-  margin: 11px 36px 36px;
+  cursor: pointer;
+}
+@media screen and (max-width: 320px) {
+  .modal__content {
+    max-width: 282px;
+    width: 100%;
+    height: 322px;
+    padding: 25px 22px;
+  }
+  .modal__close {
+    width: 26px;
+    height: 26px;
+    top: -72px;
+    right: -264px;
+  }
+  .modal__close:hover {
+    width: 26px;
+    height: 26px;
+    top: -72px;
+    right: -264px;
+  }
+  .modal__title {
+    font-weight: 900;
+    font-size: 18px;
+    padding-bottom: 76px;
+  }
+  .modal__input {
+    width: 238px;
+    height: 26px;
+  }
+  .modal__input_type_description {
+    margin-bottom: 46px;
+  }
+  .modal__save {
+    width: 238px;
+    height: 46px;
+  }
 }
