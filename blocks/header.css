@@ -9,6 +9,18 @@
   width: 880px;
   margin-top: 41px;
 }
+@media screen and (max-width: 768px) {
+  .header {
+    width: 100%;
+    padding: 45px 19px 40px;
+  }
+  .header__line {
+    color: #545454;
+    opacity: 70%;
+    width: 100%;
+    margin-top: 41px;
+  }
+}
 @media screen and (max-width: 320px) {
   .header {
     max-width: 320px;

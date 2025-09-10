@@ -63,10 +63,10 @@
   width: 358px;
   height: 27.26px;
   border: none;
-  border-bottom: 1px;
-  border-color: #000000;
+  border-bottom: 1px solid #c4c4c4;
   font-weight: 400;
   font-size: 14px;
+  text-align: left;
 }
 .modal__input_type_name {
   margin-bottom: 29px;
@@ -86,6 +86,9 @@
   box-shadow: none;
   cursor: pointer;
 }
+@media screen and (max-width: 768px) {
+}
+
 @media screen and (max-width: 320px) {
   .modal__content {
     max-width: 282px;
@@ -94,10 +97,8 @@
     padding: 25px 22px;
   }
   .modal__close {
-    width: 26px;
-    height: 26px;
-    top: -72px;
-    right: -264px;
+    top: -54px;
+    right: 0px;
   }
   .modal__close:hover {
     width: 26px;
