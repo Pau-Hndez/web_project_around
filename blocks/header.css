@@ -25,7 +25,7 @@
   .header {
     max-width: 320px;
     height: 56px;
-    padding: 0;
+    padding: 0 0 42px;
   }
   .header__picture {
     max-width: 126px;
