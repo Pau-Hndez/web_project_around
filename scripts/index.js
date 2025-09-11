@@ -2,16 +2,10 @@ const cardWrap = document.querySelector(".content__places");
 const modal = document.querySelector(".modal");
 const profileFormElement = document.querySelector(".modal__form");
 
-const profileEditButton = document.querySelector(
-  ".content__profile_info_description_edit-button"
-);
+const profileEditButton = document.querySelector(".content__edit-button");
 const modalCloseButton = document.querySelector(".modal__close");
-const profileTitle = document.querySelector(
-  ".content__profile_info_description_name"
-);
-const profileDescription = document.querySelector(
-  ".content__profile_info_description_about-me"
-);
+const profileTitle = document.querySelector(".content__name");
+const profileDescription = document.querySelector(".content__about-me");
 
 const nameInput = profileFormElement.querySelector(".modal__input_type_name");
 const jobInput = profileFormElement.querySelector(

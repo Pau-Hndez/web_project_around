@@ -6,6 +6,9 @@
   flex-direction: row;
   justify-content: space-between;
 }
+.content__info {
+  display: flex;
+}
 .content__picture {
   width: 120px;
   height: 120px;
@@ -81,12 +84,12 @@
   overflow: hidden;
   gap: 0;
 }
-.content__places_card_picture {
+.content__card-picture {
   width: 100%;
   height: 282px;
   border-radius: 0;
 }
-.content__places_card_name {
+.content__card-name {
   width: 246px;
   height: 23px;
   display: flex;
@@ -95,14 +98,14 @@
   justify-content: space-between;
   align-items: center;
 }
-.content__places_card_name_title {
+.content__title {
   font-weight: 900;
   font-size: 24px;
   color: #000000;
   margin: 0;
   padding: 0;
 }
-.content__places_card_name_like-button {
+.content__like-button {
   background-image: url(../images/like.svg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -113,7 +116,7 @@
   margin: 0;
   padding: 0;
 }
-.content__places_card_name_like-button:hover {
+.content__like-button:hover {
   background-image: url(../images/like\ button\ -\ hover.svg);
   background-size: contain;
   background-repeat: no-repeat;
@@ -123,7 +126,7 @@
   border-style: none;
   cursor: pointer;
 }
-.content__places_card_name_like-button:active {
+.content__like-button:active {
   background-image: url(../images/like\ button\ -\ active.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -136,10 +139,10 @@
   .content {
     margin: 0 19px;
   }
-  .content__places_card_picture {
+  .content__card-picture {
     width: 100%;
   }
-  .content__profile_info_description {
+  .content__description {
     margin: 22px 50px 21px 30px;
   }
 }
@@ -156,13 +159,13 @@
     justify-content: center;
     align-items: center;
   }
-  .content__profile_info {
+  .content__info {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin: 0;
   }
-  .content__profile_info_description {
+  .content__description {
     column-gap: 14px;
     justify-content: center;
     align-items: center;
@@ -173,25 +176,25 @@
     column-gap: 18px;
     grid-template-areas: "name button" "about-me about-me";
   }
-  .content__profile_info_description_name {
+  .content__name {
     font-size: 22px;
   }
-  .content__profile_info_description_edit-button {
+  .content__edit-button {
     width: 18px;
     height: 18px;
   }
-  .content__profile_info_description_edit-button:hover {
+  .content__edit-button:hover {
     width: 18px;
     height: 18px;
   }
-  .content__profile_info_description_about-me {
+  .content__about-me {
     font-size: 14px;
     text-align: center;
   }
-  .content__profile_add-button {
+  .content__add-button {
     width: 282px;
     height: 50px;
-    margin: 0;
+    margin-top: 36px;
   }
 
   .content__places {
@@ -211,26 +214,21 @@
     margin: 0;
     gap: 0;
   }
-  .content__places_card_picture {
+  .content__card-picture {
     width: 282px;
     height: 282px;
     border-radius: 0;
   }
-  .content__places_card_name {
+  .content__card-name {
     width: 246px;
     height: 24px;
-    display: flex;
-    margin-left: 15px;
-    border-radius: 0;
-    justify-content: space-between;
-    align-items: center;
   }
-  .content__places_card_name_title {
+  .content__title {
     font-weight: 900;
     font-size: 24px;
     margin: 0;
   }
-  .content__places_card_name_like-button {
+  .content__like-button {
     background-image: url(../images/like.svg);
     background-size: contain;
     background-repeat: no-repeat;
