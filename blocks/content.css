@@ -6,12 +6,12 @@
   flex-direction: row;
   justify-content: space-between;
 }
-.content__profile_info_picture {
+.content__picture {
   width: 120px;
   height: 120px;
   border-radius: 50%;
 }
-.content__profile_info_description {
+.content__description {
   display: grid;
   margin: 22px 165px 21px 30px;
   grid-template-columns: auto auto;
@@ -19,7 +19,7 @@
   gap: 18px;
   grid-template-areas: "name button" "about-me about-me";
 }
-.content__profile_info_description_name {
+.content__name {
   font-weight: 500;
   font-size: 42px;
   line-height: 48px;
@@ -27,7 +27,7 @@
   grid-area: "name";
   gap: 0;
 }
-.content__profile_info_description_edit-button {
+.content__edit-button {
   width: 24px;
   height: 24px;
   margin: 15px 0 0 0;
@@ -38,17 +38,17 @@
   border-style: none;
   grid-area: "button";
 }
-.content__profile_info_description_edit-button:hover {
+.content__edit-button:hover {
   cursor: pointer;
   opacity: 60%;
 }
-.content__profile_info_description_about-me {
+.content__about-me {
   font-weight: 400;
   font-size: 18px;
   grid-area: "about-me";
   margin: 0;
 }
-.content__profile_add-button {
+.content__add-button {
   width: 150px;
   height: 50px;
   border-radius: 2px;
@@ -59,7 +59,7 @@
   display: flex;
   justify-content: center;
 }
-.content__profile_add-button:hover {
+.content__add-button:hover {
   cursor: pointer;
   border-radius: 2px;
   border-color: #ffffff;
