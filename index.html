@@ -38,74 +38,25 @@
             <img src="./images/add-button.png" alt="Agregar" />
           </button>
         </section>
-        <section class="content__places">
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Valle de Yosemite"
-              src="./images/Valle de yosemite.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Valle de Yosemite</h2>
-              <button class="content__like-button" type="button"></button>
+        <section class="content__places"></section>
+        <template id="card__template">
+          <li class="card">
+            <img class="card__picture" alt="" src="#" />
+            <button
+              aria-label="Delete card"
+              class="card__delete-button"
+              type="button"
+            ></button>
+            <div class="card__name">
+              <h2 class="card__title"></h2>
+              <button
+                aria-label="like card"
+                class="card__like-button"
+                type="button"
+              ></button>
             </div>
           </li>
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Lago Louise"
-              src="./images/Lago Louise.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Lago Louise</h2>
-              <button class="content__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Montañas Calvas"
-              src="./images/Montañas Calvas.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Montañas Calvas</h2>
-              <button class="content__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Latemar"
-              src="./images/Latemar.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Latemar</h2>
-              <button class="content__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Vanois National..."
-              src="./images/Vanois.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Vanois National...</h2>
-              <button class="content__like-button" type="button"></button>
-            </div>
-          </li>
-          <li class="content__places content__places_card">
-            <img
-              class="content__card-picture"
-              alt="Lago di Braies"
-              src="./images/Lago di Braies.jpg"
-            />
-            <div class="content__card-name">
-              <h2 class="content__title">Lago di Braies</h2>
-              <button class="content__like-button" type="button"></button>
-            </div>
-          </li>
-        </section>
+        </template>
       </main>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
@@ -132,6 +83,42 @@
           />
           <button class="modal__save" type="submit">Guardar</button>
         </form>
+      </div>
+    </div>
+    <div class="popup">
+      <div class="popup__content">
+        <button
+          aria-label="close popup"
+          class="popup__close"
+          type="button"
+        ></button>
+        <h3 class="popup__title">Nuevo lugar</h3>
+        <form class="popup__form" id="edit-card-popup">
+          <input
+            class="popup__input popup__input_type_place"
+            name="title"
+            placeholder="Título"
+            type="text"
+          />
+          <input
+            class="popup__input popup__input_type_picture-link"
+            name="picture"
+            placeholder="Enlace a la imagen"
+            type="text"
+          />
+          <button class="popup__save" type="submit">Crear</button>
+        </form>
+      </div>
+    </div>
+    <div class="photo">
+      <div class="photo__display">
+        <button
+          aria-label="close popup"
+          class="photo__close"
+          type="button"
+        ></button>
+        <img class="photo__big" alt="" src="#" />
+        <p class="photo__name"></p>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

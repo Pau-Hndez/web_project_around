@@ -1,0 +1,54 @@
+.photo {
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  display: none;
+}
+.photo_is-opened {
+  display: flex;
+}
+.photo__display {
+  max-width: auto;
+  position: relative;
+  font-family: "Inter";
+}
+.photo__close {
+  background-image: url(../images/Close\ Icon.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.photo__close:hover {
+  background-image: url(../images/Close\ Icon\ -\ hover.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+  width: 40px;
+  height: 40px;
+  border-style: none;
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+.photo__name {
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+}

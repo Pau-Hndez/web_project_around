@@ -1,4 +1,4 @@
-.modal {
+.popup {
   position: fixed;
   align-items: center;
   justify-content: center;
@@ -9,10 +9,10 @@
   bottom: 0;
   display: none;
 }
-.modal_is-opened {
+.popup_is-opened {
   display: flex;
 }
-.modal__content {
+.popup__content {
   max-width: 430px;
   width: 100%;
   height: 330px;
@@ -23,7 +23,7 @@
   padding: 34px 36px;
   font-family: "Inter";
 }
-.modal__close {
+.popup__close {
   background-image: url(../images/Close\ Icon.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -38,7 +38,7 @@
   margin: 0;
   cursor: pointer;
 }
-.modal__close:hover {
+.popup__close:hover {
   background-image: url(../images/Close\ Icon\ -\ hover.png);
   background-size: contain;
   background-repeat: no-repeat;
@@ -53,13 +53,13 @@
   margin: 0;
   cursor: pointer;
 }
-.modal__title {
+.popup__title {
   font-weight: 900;
   font-size: 24px;
   margin: 0;
   padding-bottom: 54px;
 }
-.modal__input {
+.popup__input {
   width: 358px;
   height: 27.26px;
   border: none;
@@ -68,13 +68,13 @@
   font-size: 14px;
   text-align: left;
 }
-.modal__input_type_name {
+.popup__input_type_place {
   margin-bottom: 29px;
 }
-.modal__input_type_description {
+.popup__input_type_picture-link {
   margin-bottom: 48px;
 }
-.modal__save {
+.popup__save {
   width: 358px;
   height: 50.15px;
   border-radius: 2px;
@@ -88,35 +88,35 @@
 }
 
 @media screen and (max-width: 320px) {
-  .modal__content {
+  .popup__content {
     max-width: 282px;
     width: 100%;
     height: 322px;
     padding: 25px 22px;
   }
-  .modal__close {
+  .popup__close {
     top: -54px;
     right: 0px;
   }
-  .modal__close:hover {
+  .popup__close:hover {
     width: 26px;
     height: 26px;
     top: -72px;
     right: -264px;
   }
-  .modal__title {
+  .popup__title {
     font-weight: 900;
     font-size: 18px;
     padding-bottom: 76px;
   }
-  .modal__input {
+  .popup__input {
     width: 238px;
     height: 26px;
   }
-  .modal__input_type_description {
+  .popup__input_type_picture-link {
     margin-bottom: 46px;
   }
-  .modal__save {
+  .popup__save {
     width: 238px;
     height: 46px;
   }

@@ -75,73 +75,12 @@
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   grid-gap: 20px 17px;
 }
-.content__places_card {
-  border-radius: 10px;
-  background-color: #ffffff;
-  width: 100%;
-  height: 361px;
-  padding: 0;
-  overflow: hidden;
-  gap: 0;
-}
-.content__card-picture {
-  width: 100%;
-  height: 282px;
-  border-radius: 0;
-}
-.content__card-name {
-  width: 246px;
-  height: 23px;
-  display: flex;
-  margin: 0;
-  padding: 25px 15px 31px 21px;
-  justify-content: space-between;
-  align-items: center;
-}
-.content__title {
-  font-weight: 900;
-  font-size: 24px;
-  color: #000000;
-  margin: 0;
-  padding: 0;
-}
-.content__like-button {
-  background-image: url(../images/like.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  width: 21px;
-  height: 19px;
-  border-style: none;
-  margin: 0;
-  padding: 0;
-}
-.content__like-button:hover {
-  background-image: url(../images/like\ button\ -\ hover.svg);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-  width: 21px;
-  height: 19px;
-  border-style: none;
-  cursor: pointer;
-}
-.content__like-button:active {
-  background-image: url(../images/like\ button\ -\ active.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  width: 21px;
-  height: 19px;
-  border-style: none;
-  cursor: pointer;
-}
+
 @media screen and (max-width: 768px) {
   .content {
     margin: 0 19px;
   }
-  .content__card-picture {
-    width: 100%;
-  }
+
   .content__description {
     margin: 22px 50px 21px 30px;
   }
@@ -203,38 +142,5 @@
     grid-gap: 20px;
     margin: 0;
     max-width: 282px;
-  }
-
-  .content__places_card {
-    border-radius: 10px;
-    background-color: #ffffff;
-    max-width: 282px;
-    height: 361px;
-    padding: 0;
-    margin: 0;
-    gap: 0;
-  }
-  .content__card-picture {
-    width: 282px;
-    height: 282px;
-    border-radius: 0;
-  }
-  .content__card-name {
-    width: 246px;
-    height: 24px;
-  }
-  .content__title {
-    font-weight: 900;
-    font-size: 24px;
-    margin: 0;
-  }
-  .content__like-button {
-    background-image: url(../images/like.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-color: #ffffff;
-    width: 21px;
-    height: 19px;
-    border-style: none;
   }
 }
