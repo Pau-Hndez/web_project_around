@@ -68,6 +68,9 @@
   font-size: 14px;
   text-align: left;
 }
+.modal__input:invalid {
+  border-bottom: 1px solid #FF0000;
+}
 .modal__input_type_name {
   margin-bottom: 29px;
 }
@@ -85,6 +88,12 @@
   font-size: 18px;
   box-shadow: none;
   cursor: pointer;
+}
+.modal__input-error { 
+ font-weight: 220;
+ font-size: 12px;
+ background-color: #FF0000;
+ margin-top: 8px;
 }
 
 @media screen and (max-width: 320px) {

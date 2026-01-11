@@ -103,8 +103,12 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = jobInput.value;
   closeModal();
 }
+//funciones para validar formulario
+profileFormElement.addEventListener("submit", function(evt){
+  evt.preventDefault();
+});
 
-//funciones nuevas
+
 //función para el popup de la foto grande
 function handlePhotoPopup(evt) {
   const clickedImage = evt.target;
