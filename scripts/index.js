@@ -10,6 +10,8 @@ const photoPopup = document.querySelector(".photo");
 
 //hijos
 const profileFormElement = document.querySelector(".modal__form");
+const formInput = profileFormElement.querySelector(".modal__input");
+const formError = profileFormElement.querySelector(`.${formInput.id}-error`);
 const profileTitle = document.querySelector(".content__name");
 const profileDescription = document.querySelector(".content__about-me");
 const nameInput = profileFormElement.querySelector(".modal__input_type_name");
@@ -104,11 +106,30 @@ function handleProfileFormSubmit(evt) {
   closeModal();
 }
 //funciones para validar formulario
-profileFormElement.addEventListener("submit", function(evt){
+profileFormElement.addEventListener("submit", function (evt) {
   evt.preventDefault();
 });
-
-
+nameInput.addEventListener("input", function (evt) {
+  console.log(evt.target.validity);
+});
+//función para mostrar o quitar el error
+const showError = (input, errorMessage) => {
+  input.classList.add("modal__input:invalid");
+  formError.textContent = errorMessage;
+  formError.classList.add("modal__input-error");
+};
+const hideError = (input) => {
+  input.classList.remove("modal__input:invalid");
+  formError.classList - renderCard, remove("modal__input-error");
+  formError.textContent = "";
+};
+const isValid = () => {
+  if (!formInput.validity.valid) {
+    showError(formInput, formInput.validationMessage);
+  } else {
+    hideError(formInput);
+  }
+};
 //función para el popup de la foto grande
 function handlePhotoPopup(evt) {
   const clickedImage = evt.target;
