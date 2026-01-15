@@ -71,12 +71,7 @@
 .modal__input:invalid {
   border-bottom: 1px solid #ff0000;
 }
-.modal__input_type_name {
-  margin-bottom: 29px;
-}
-.modal__input_type_description {
-  margin-bottom: 48px;
-}
+
 .modal__save {
   width: 358px;
   height: 50.15px;
@@ -88,7 +83,9 @@
   font-size: 18px;
   box-shadow: none;
   cursor: pointer;
+  margin-top: 26px;
 }
+
 .modal__save_inactive {
   background-color: #ffffff;
   border-color: #c4c4c4;
@@ -96,8 +93,9 @@
 .modal__input-error {
   font-weight: 220;
   font-size: 12px;
-  background-color: #ff0000;
-  margin-top: 8px;
+  background-color: #ffffff;
+  color: #ff0000;
+  font-family: "Inter";
 }
 
 @media screen and (max-width: 320px) {

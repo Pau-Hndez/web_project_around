@@ -9,30 +9,48 @@ const cardWrap = cardTemplate.querySelector(".card");
 const photoPopup = document.querySelector(".photo");
 
 //hijos
-const profileFormElement = document.querySelector(".modal__form");
-const formInput = profileFormElement.querySelector(".modal__input");
-const formError = profileFormElement.querySelector(`.${formInput.id}-error`);
 const profileTitle = document.querySelector(".content__name");
 const profileDescription = document.querySelector(".content__about-me");
-const nameInput = profileFormElement.querySelector(".modal__input_type_name");
-const jobInput = profileFormElement.querySelector(
-  ".modal__input_type_description"
-);
-const popupFormElement = document.querySelector(".popup__form");
-const titleInput = popupFormElement.querySelector(".popup__input_type_place");
-const pictureInput = popupFormElement.querySelector(
-  ".popup__input_type_picture-link"
-);
+
 const photoBigPopup = photoPopup.querySelector(".photo__big");
 const photoPopupTitle = photoPopup.querySelector(".photo__name");
 //buttons
 const profileEditButton = document.querySelector(".content__edit-button");
 const modalCloseButton = document.querySelector(".modal__close");
-const saveButton = profileFormElement.querySelector(".modal__save");
+const saveButton = document.querySelector(".modal__save");
 const popupAddButton = document.querySelector(".content__add-button");
 const popupCloseButton = document.querySelector(".popup__close");
-const popupSaveButton = popupFormElement.querySelector(".popup__save");
+const popupSaveButton = document.querySelector(".popup__save");
 const photoPopupClose = document.querySelector(".photo__close");
+
+const modalForms = document.querySelectorAll(".modal__form"); //clase para los dos forms
+//hijos de modal form
+const nameInput = document.querySelector(".modal__input_type_name");
+const jobInput = document.querySelector(".modal__input_type_description");
+
+modalForms.forEach((modalForm) => {
+  const formInputs = modalForm.querySelectorAll(".modal__input");
+  formInputs.forEach((formInput) => {
+    formInput.addEventListener("input", () => {
+      handleInput(modalForm, formInput, "modal__input-error");
+    });
+  });
+});
+function handleInput(modalForm, formInput, errorClass) {
+  checkInputValidity(modalForm, formInput, errorClass);
+}
+function checkInputValidity(modalForm, formInput, errorClass) {
+  if (!formInput.validity.valid) {
+    showError(modalForm, formInput, errorClass, formInput.validationMessage);
+  }
+}
+function showError(modalForm, formInput, errorClass, errorMessage) {
+  const errorElementId = `.${formInput.id}-error`;
+  const errorElement = modalForm.querySelector(errorElementId);
+  errorElement.textContent = errorMessage;
+  errorElement.classList.add(errorClass);
+  formInput.classList.add("modal__input:invalid");
+}
 
 //content
 const initialCards = [
@@ -90,8 +108,8 @@ function updateButtonColor() {
 }
 //funciones para el modal de edit profile
 function openModal() {
-  nameInput.value = profileTitle.textContent;
-  jobInput.value = profileDescription.textContent;
+  // nameInput.value = profileTitle.textContent;
+  //jobInput.value = profileDescription.textContent;
   modal.classList.add("modal_is-opened");
   updateButtonColor();
 }
@@ -106,19 +124,19 @@ function handleProfileFormSubmit(evt) {
   closeModal();
 }
 //funciones para validar formulario
-profileFormElement.addEventListener("submit", function (evt) {
-  evt.preventDefault();
-});
-nameInput.addEventListener("input", function (evt) {
-  console.log(evt.target.validity);
-});
+//profileFormElement.addEventListener("submit", function (evt) {
+// evt.preventDefault();
+//});
+//nameInput.addEventListener("input", function (evt) {
+// console.log(evt.target.validity);
+//});
 //función para mostrar o quitar el error
-const showError = (input, errorMessage) => {
-  input.classList.add("modal__input:invalid");
-  formError.textContent = errorMessage;
-  formError.classList.add("modal__input-error");
-};
-const hideError = (input) => {
+//const showError = (input, errorMessage) => {
+// input.classList.add("modal__input:invalid");
+// formError.textContent = errorMessage;
+// formError.classList.add("modal__input-error");
+//};
+/*const hideError = (input) => {
   input.classList.remove("modal__input:invalid");
   formError.classList - renderCard, remove("modal__input-error");
   formError.textContent = "";
@@ -129,7 +147,7 @@ const isValid = () => {
   } else {
     hideError(formInput);
   }
-};
+};*/
 //función para el popup de la foto grande
 function handlePhotoPopup(evt) {
   const clickedImage = evt.target;
@@ -199,10 +217,10 @@ function handleLikeIcon(evt) {
 }
 
 //Eventos
-profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+//profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", openModal);
 modalCloseButton.addEventListener("click", closeModal);
-popupAddButton.addEventListener("click", openPopup);
-popupCloseButton.addEventListener("click", closePopup);
-popupFormElement.addEventListener("submit", handleCardFormSubmit);
-photoPopupClose.addEventListener("click", photoClose);
+//popupAddButton.addEventListener("click", openPopup);
+//popupCloseButton.addEventListener("click", closePopup);
+//popupFormElement.addEventListener("submit", handleCardFormSubmit);
+//photoPopupClose.addEventListener("click", photoClose);
