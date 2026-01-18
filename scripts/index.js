@@ -43,6 +43,9 @@ function checkInputValidity(modalForm, formInput, errorClass) {
   if (!formInput.validity.valid) {
     showError(modalForm, formInput, errorClass, formInput.validationMessage);
   }
+  else {
+    hideError(modalForm, formInput, errorClass);
+  }
 }
 function showError(modalForm, formInput, errorClass, errorMessage) {
   const errorElementId = `.${formInput.id}-error`;
@@ -51,7 +54,12 @@ function showError(modalForm, formInput, errorClass, errorMessage) {
   errorElement.classList.add(errorClass);
   formInput.classList.add("modal__input:invalid");
 }
-
+function hideError(modalForm, formInput, errorClass) {
+  const errorElement = modalForm.querySelector(`.${formInput.id}-error`);
+  errorElement.textContent = "";
+  errorElement.classList.remove(errorClass);
+  formInput.classList.remove("modal__input:invalid");
+}
 //content
 const initialCards = [
   {
@@ -108,8 +116,8 @@ function updateButtonColor() {
 }
 //funciones para el modal de edit profile
 function openModal() {
-  // nameInput.value = profileTitle.textContent;
-  //jobInput.value = profileDescription.textContent;
+  nameInput.value = profileTitle.textContent;
+  jobInput.value = profileDescription.textContent;
   modal.classList.add("modal_is-opened");
   updateButtonColor();
 }
@@ -123,19 +131,7 @@ function handleProfileFormSubmit(evt) {
   profileDescription.textContent = jobInput.value;
   closeModal();
 }
-//funciones para validar formulario
-//profileFormElement.addEventListener("submit", function (evt) {
-// evt.preventDefault();
-//});
-//nameInput.addEventListener("input", function (evt) {
-// console.log(evt.target.validity);
-//});
-//función para mostrar o quitar el error
-//const showError = (input, errorMessage) => {
-// input.classList.add("modal__input:invalid");
-// formError.textContent = errorMessage;
-// formError.classList.add("modal__input-error");
-//};
+
 /*const hideError = (input) => {
   input.classList.remove("modal__input:invalid");
   formError.classList - renderCard, remove("modal__input-error");
@@ -166,8 +162,8 @@ function photoClose() {
 }
 //función del add button = open
 function openPopup() {
-  titleInput.value = "";
-  pictureInput.value = "";
+  nameInput.value = "";
+  jobInput.value = "";
   popup.classList.add("popup_is-opened");
   updateButtonColor();
 }
@@ -220,7 +216,7 @@ function handleLikeIcon(evt) {
 //profileFormElement.addEventListener("submit", handleProfileFormSubmit);
 profileEditButton.addEventListener("click", openModal);
 modalCloseButton.addEventListener("click", closeModal);
-//popupAddButton.addEventListener("click", openPopup);
-//popupCloseButton.addEventListener("click", closePopup);
-//popupFormElement.addEventListener("submit", handleCardFormSubmit);
-//photoPopupClose.addEventListener("click", photoClose);
+popupAddButton.addEventListener("click", openPopup);
+popupCloseButton.addEventListener("click", closePopup);
+popupFormElement.addEventListener("submit", handleCardFormSubmit);
+photoPopupClose.addEventListener("click", photoClose);
