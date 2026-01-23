@@ -11,9 +11,10 @@ const photoPopup = document.querySelector(".photo");
 //hijos
 const profileTitle = document.querySelector(".content__name");
 const profileDescription = document.querySelector(".content__about-me");
-
 const photoBigPopup = photoPopup.querySelector(".photo__big");
 const photoPopupTitle = photoPopup.querySelector(".photo__name");
+const nameInput = document.querySelector(".modal__input_type_name");
+const jobInput = document.querySelector(".modal__input_type_description");
 //buttons
 const profileEditButton = document.querySelector(".content__edit-button");
 const modalCloseButton = document.querySelector(".modal__close");
@@ -22,44 +23,19 @@ const popupAddButton = document.querySelector(".content__add-button");
 const popupCloseButton = document.querySelector(".popup__close");
 const popupSaveButton = document.querySelector(".popup__save");
 const photoPopupClose = document.querySelector(".photo__close");
+import { setEventListeners, validationConfig } from "./validity.js";
 
-const modalForms = document.querySelectorAll(".modal__form"); //clase para los dos forms
-//hijos de modal form
-const nameInput = document.querySelector(".modal__input_type_name");
-const jobInput = document.querySelector(".modal__input_type_description");
-
+const modalForms = document.querySelectorAll(".modal__form");
 modalForms.forEach((modalForm) => {
-  const formInputs = modalForm.querySelectorAll(".modal__input");
+  const formInputs = modalForm.querySelectorAll(validationConfig.inputSelector);
   formInputs.forEach((formInput) => {
     formInput.addEventListener("input", () => {
-      handleInput(modalForm, formInput, "modal__input-error");
+      //handleInput(modalForm, formInput, validationConfig.errorClass);
+      setEventListeners(modalForm);
     });
   });
 });
-function handleInput(modalForm, formInput, errorClass) {
-  checkInputValidity(modalForm, formInput, errorClass);
-}
-function checkInputValidity(modalForm, formInput, errorClass) {
-  if (!formInput.validity.valid) {
-    showError(modalForm, formInput, errorClass, formInput.validationMessage);
-  }
-  else {
-    hideError(modalForm, formInput, errorClass);
-  }
-}
-function showError(modalForm, formInput, errorClass, errorMessage) {
-  const errorElementId = `.${formInput.id}-error`;
-  const errorElement = modalForm.querySelector(errorElementId);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(errorClass);
-  formInput.classList.add("modal__input:invalid");
-}
-function hideError(modalForm, formInput, errorClass) {
-  const errorElement = modalForm.querySelector(`.${formInput.id}-error`);
-  errorElement.textContent = "";
-  errorElement.classList.remove(errorClass);
-  formInput.classList.remove("modal__input:invalid");
-}
+
 //content
 const initialCards = [
   {
@@ -107,43 +83,23 @@ const getCardElement = (data) => {
   return cardElement;
 };
 
-function updateButtonColor() {
-  if (nameInput.ariaValueMax.trim() === "" && jobInput.value.trim() === "") {
-    saveButton.classList.add("white");
-  } else {
-    saveButton.classList.remove("white");
-  }
-}
 //funciones para el modal de edit profile
 function openModal() {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileDescription.textContent;
   modal.classList.add("modal_is-opened");
-  updateButtonColor();
 }
 function closeModal() {
   modal.classList.remove("modal_is-opened");
 }
 
 function handleProfileFormSubmit(evt) {
-  console.log(evt.preventDefault(), "Form submission prevented");
+  evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
   closeModal();
 }
 
-/*const hideError = (input) => {
-  input.classList.remove("modal__input:invalid");
-  formError.classList - renderCard, remove("modal__input-error");
-  formError.textContent = "";
-};
-const isValid = () => {
-  if (!formInput.validity.valid) {
-    showError(formInput, formInput.validationMessage);
-  } else {
-    hideError(formInput);
-  }
-};*/
 //función para el popup de la foto grande
 function handlePhotoPopup(evt) {
   const clickedImage = evt.target;
@@ -190,7 +146,7 @@ function handleCardFormSubmit(evt) {
 
   renderCard(newCard, wrap);
   closePopup();
-  popupFormElement.reset();
+  popupSaveButton.reset();
 }
 
 const renderCard = (data, wrap) => {
@@ -213,10 +169,12 @@ function handleLikeIcon(evt) {
 }
 
 //Eventos
-//profileFormElement.addEventListener("submit", handleProfileFormSubmit);
+modalForms.forEach((form) => {
+  form.addEventListener("submit", handleProfileFormSubmit);
+});
 profileEditButton.addEventListener("click", openModal);
 modalCloseButton.addEventListener("click", closeModal);
 popupAddButton.addEventListener("click", openPopup);
 popupCloseButton.addEventListener("click", closePopup);
-popupFormElement.addEventListener("submit", handleCardFormSubmit);
+popupSaveButton.addEventListener("submit", handleCardFormSubmit);
 photoPopupClose.addEventListener("click", photoClose);
