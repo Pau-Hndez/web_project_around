@@ -23,6 +23,10 @@ const popupAddButton = document.querySelector(".content__add-button");
 const popupCloseButton = document.querySelector(".popup__close");
 const popupSaveButton = document.querySelector(".popup__save");
 const photoPopupClose = document.querySelector(".photo__close");
+const cardForm = document.querySelector("#edit-card-popup");
+const profileForm = document.querySelector("#edit-profile-form");
+const titleInput = document.querySelector("#card-name");
+const pictureInput = document.querySelector("#card-description");
 import { setEventListeners, validationConfig } from "./validity.js";
 
 const modalForms = document.querySelectorAll(".modal__form");
@@ -133,12 +137,12 @@ function handleCardFormSubmit(evt) {
 
   const title = titleInput.value.trim();
   const picture = pictureInput.value.trim();
-
+  /*
   if (!title || !picture) {
     alert("Por favor completa ambos campos.");
     return;
   }
-
+*/
   const newCard = {
     name: title,
     link: picture,
@@ -169,12 +173,17 @@ function handleLikeIcon(evt) {
 }
 
 //Eventos
-modalForms.forEach((form) => {
+/*modalForms. {
   form.addEventListener("submit", handleProfileFormSubmit);
-});
+});*/
+
 profileEditButton.addEventListener("click", openModal);
 modalCloseButton.addEventListener("click", closeModal);
 popupAddButton.addEventListener("click", openPopup);
 popupCloseButton.addEventListener("click", closePopup);
-popupSaveButton.addEventListener("submit", handleCardFormSubmit);
+cardForm.addEventListener("submit", handleCardFormSubmit);
+profileForm.addEventListener("submit", handleProfileFormSubmit);
 photoPopupClose.addEventListener("click", photoClose);
+
+//a los botones de los formularios no se les programa el evento submit.
+//se le programa al form como tal para que llame la función submit

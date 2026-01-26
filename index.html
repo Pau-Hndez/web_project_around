@@ -91,7 +91,7 @@
             maxlength="200"
           />
           <span class="modal__input-error description-input-error"></span>
-          <button class="modal__save" type="submit">Guardar</button>
+          <button class="modal__save" type="submit" disabled>Guardar</button>
         </form>
       </div>
     </div>
@@ -105,12 +105,14 @@
         <h3 class="modal__title">Nuevo lugar</h3>
         <form class="modal__form" id="edit-card-popup">
           <input
+            id="card-name"
             class="modal__input modal__input_type_name"
             name="title"
             placeholder="Título"
             type="text"
           />
           <input
+            id="card-description"
             class="modal__input modal__input_type_description"
             name="picture"
             placeholder="Enlace a la imagen"
