@@ -1,10 +1,10 @@
 //padres
-const modal = document.querySelector(".modal");
+const modal = document.querySelector("#popup-profile");
 const cardTemplate = document
   .querySelector("#card__template")
   .content.querySelector(".card");
 const wrap = document.querySelector(".content__places");
-const popup = document.querySelector(".popup");
+const popup = document.querySelector("#popup-place");
 const cardWrap = cardTemplate.querySelector(".card");
 const photoPopup = document.querySelector(".photo");
 
@@ -17,10 +17,10 @@ const nameInput = document.querySelector(".modal__input_type_name");
 const jobInput = document.querySelector(".modal__input_type_description");
 //buttons
 const profileEditButton = document.querySelector(".content__edit-button");
-const modalCloseButton = document.querySelector(".modal__close");
+const modalCloseButton = document.querySelector("#popup-profile-close");
 const saveButton = document.querySelector(".modal__save");
 const popupAddButton = document.querySelector(".content__add-button");
-const popupCloseButton = document.querySelector(".popup__close");
+const popupCloseButton = document.querySelector("#popup-place-close");
 const popupSaveButton = document.querySelector(".popup__save");
 const photoPopupClose = document.querySelector(".photo__close");
 const cardForm = document.querySelector("#edit-card-popup");
@@ -93,15 +93,15 @@ function openModal() {
   jobInput.value = profileDescription.textContent;
   modal.classList.add("modal_is-opened");
 }
-function closeModal() {
-  modal.classList.remove("modal_is-opened");
-}
+//function closeModal() {
+// modal.classList.remove("modal_is-opened");
+//}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closeModal();
+  closePopup("#popup-profile");
 }
 
 //función para el popup de la foto grande
@@ -127,9 +127,9 @@ function openPopup() {
   popup.classList.add("popup_is-opened");
   updateButtonColor();
 }
-//función del boton cerrar popup
-function closePopup() {
-  popup.classList.remove("popup_is-opened");
+//función del boton cerrar
+function closePopup(popupId) {
+  popupId.classList.remove("modal_is-opened");
 }
 //función para que se cree una nueva card
 function handleCardFormSubmit(evt) {
@@ -149,7 +149,7 @@ function handleCardFormSubmit(evt) {
   };
 
   renderCard(newCard, wrap);
-  closePopup();
+  closePopup("#edit-card-popup");
   popupSaveButton.reset();
 }
 
@@ -178,9 +178,9 @@ function handleLikeIcon(evt) {
 });*/
 
 profileEditButton.addEventListener("click", openModal);
-modalCloseButton.addEventListener("click", closeModal);
+modalCloseButton.addEventListener("click", closePopup("#popup-profile"));
 popupAddButton.addEventListener("click", openPopup);
-popupCloseButton.addEventListener("click", closePopup);
+popupCloseButton.addEventListener("click", closePopup("#popup-place"));
 cardForm.addEventListener("submit", handleCardFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 photoPopupClose.addEventListener("click", photoClose);

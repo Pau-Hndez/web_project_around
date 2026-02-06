@@ -60,12 +60,13 @@
       </main>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
-    <div class="modal">
+    <div class="modal" id="popup-profile">
       <div class="modal__content">
         <button
           aria-label="close modal"
           class="modal__close"
           type="button"
+          id="popup-profile-close"
         ></button>
         <h3 class="modal__title">Editar perfil</h3>
         <form class="modal__form" id="edit-profile-form" novalidate>
@@ -95,12 +96,13 @@
         </form>
       </div>
     </div>
-    <div class="popup">
-      <div class="popup__content">
+    <div class="modal" id="popup-place">
+      <div class="modal__content">
         <button
           aria-label="close popup"
-          class="popup__close"
+          class="modal__close"
           type="button"
+          id="popup-place-close"
         ></button>
         <h3 class="modal__title">Nuevo lugar</h3>
         <form class="modal__form" id="edit-card-popup">
@@ -111,6 +113,7 @@
             placeholder="Título"
             type="text"
           />
+          <span class="modal__input-error card-name-error"></span>
           <input
             id="card-description"
             class="modal__input modal__input_type_description"
@@ -118,7 +121,8 @@
             placeholder="Enlace a la imagen"
             type="text"
           />
-          <button class="popup__save" type="submit">Crear</button>
+          <span class="modal__input-error card-description-error"></span>
+          <button class="modal__save" type="submit">Crear</button>
         </form>
       </div>
     </div>
