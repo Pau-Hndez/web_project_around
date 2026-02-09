@@ -3,7 +3,7 @@
 export const validationConfig = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__save_inactive",
+  inactiveButtonClass: ".modal__save_inactive",
   inputErrorClass: ".modal__input:invalid",
   errorClass: ".modal__input-error",
 };
@@ -11,11 +11,16 @@ export const validationConfig = {
 function handleInput(modalForm, formInput, errorClass) {
   checkInputValidity(modalForm, formInput, errorClass);
 }
-function checkInputValidity(modalForm, formInput, errorClass) {
+function checkInputValidity(modalForm, formInput) {
   if (!formInput.validity.valid) {
-    showError(modalForm, formInput, errorClass, formInput.validationMessage);
+    showError(
+      modalForm,
+      formInput,
+      validationConfig.errorClass,
+      formInput.validationMessage,
+    );
   } else {
-    hideError(modalForm, formInput, errorClass);
+    hideError(modalForm, formInput, validationConfig.errorClass);
   }
 }
 function showError(modalForm, formInput, errorClass, errorMessage) {
@@ -46,6 +51,7 @@ const toggleButtonState = (inputList, buttonElement) => {
     buttonElement.disabled = false;
   }
 };
+
 //formElement = modalForm
 export const setEventListeners = (modalForm) => {
   const inputList = Array.from(

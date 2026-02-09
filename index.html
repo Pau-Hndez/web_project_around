@@ -112,6 +112,9 @@
             name="title"
             placeholder="Título"
             type="text"
+            required
+            minlength="2"
+            maxlength="30"
           />
           <span class="modal__input-error card-name-error"></span>
           <input
@@ -119,7 +122,8 @@
             class="modal__input modal__input_type_description"
             name="picture"
             placeholder="Enlace a la imagen"
-            type="text"
+            type="url"
+            required
           />
           <span class="modal__input-error card-description-error"></span>
           <button class="modal__save" type="submit">Crear</button>

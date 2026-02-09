@@ -101,7 +101,7 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = nameInput.value;
   profileDescription.textContent = jobInput.value;
-  closePopup("#popup-profile");
+  closePopup(modal);
 }
 
 //función para el popup de la foto grande
@@ -124,12 +124,12 @@ function photoClose() {
 function openPopup() {
   nameInput.value = "";
   jobInput.value = "";
-  popup.classList.add("popup_is-opened");
-  updateButtonColor();
+  popup.classList.add("modal_is-opened");
+  //updateButtonColor();
 }
 //función del boton cerrar
-function closePopup(popupId) {
-  popupId.classList.remove("modal_is-opened");
+function closePopup(popup) {
+  popup.classList.remove("modal_is-opened");
 }
 //función para que se cree una nueva card
 function handleCardFormSubmit(evt) {
@@ -137,20 +137,30 @@ function handleCardFormSubmit(evt) {
 
   const title = titleInput.value.trim();
   const picture = pictureInput.value.trim();
-  /*
-  if (!title || !picture) {
-    alert("Por favor completa ambos campos.");
-    return;
-  }
-*/
+
   const newCard = {
     name: title,
     link: picture,
   };
 
   renderCard(newCard, wrap);
-  closePopup("#edit-card-popup");
+  closePopup(popup);
   popupSaveButton.reset();
+}
+//función para que se cierre con la tecla ESC
+function handleEscClose(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_is-opened");
+    const openedPhoto = document.querySelector(".photo_is-opened");
+
+    if (openedModal) {
+      closePopup(openedModal);
+    }
+
+    if (openedPhoto) {
+      openedPhoto.classList.remove("photo_is-opened");
+    }
+  }
 }
 
 const renderCard = (data, wrap) => {
@@ -173,14 +183,17 @@ function handleLikeIcon(evt) {
 }
 
 //Eventos
-/*modalForms. {
-  form.addEventListener("submit", handleProfileFormSubmit);
-});*/
-
+document.addEventListener("keydown", handleEscClose);
 profileEditButton.addEventListener("click", openModal);
-modalCloseButton.addEventListener("click", closePopup("#popup-profile"));
 popupAddButton.addEventListener("click", openPopup);
-popupCloseButton.addEventListener("click", closePopup("#popup-place"));
+modalCloseButton.addEventListener("click", () => {
+  closePopup(modal);
+});
+
+popupCloseButton.addEventListener("click", () => {
+  closePopup(popup);
+});
+
 cardForm.addEventListener("submit", handleCardFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 photoPopupClose.addEventListener("click", photoClose);
