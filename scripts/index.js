@@ -186,6 +186,9 @@ function handleLikeIcon(evt) {
 document.addEventListener("keydown", handleEscClose);
 profileEditButton.addEventListener("click", openModal);
 popupAddButton.addEventListener("click", openPopup);
+/*popupAddButton.addEventListener("click", () => {
+  openPopup();
+});*/
 modalCloseButton.addEventListener("click", () => {
   closePopup(modal);
 });
@@ -193,6 +196,10 @@ modalCloseButton.addEventListener("click", () => {
 popupCloseButton.addEventListener("click", () => {
   closePopup(popup);
 });
+/*document.addEventListener("click", () => {
+  console.log("focusout");
+  closePopup(popup);
+});*/
 
 cardForm.addEventListener("submit", handleCardFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);

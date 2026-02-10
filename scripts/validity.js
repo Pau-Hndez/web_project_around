@@ -3,8 +3,8 @@
 export const validationConfig = {
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__save",
-  inactiveButtonClass: ".modal__save_inactive",
-  inputErrorClass: ".modal__input:invalid",
+  inactiveButtonClass: "modal__save_inactive",
+  inputErrorClass: "modal__input:invalid",
   errorClass: ".modal__input-error",
 };
 
