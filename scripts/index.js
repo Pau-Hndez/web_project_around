@@ -5,7 +5,6 @@ const cardTemplate = document
   .content.querySelector(".card");
 const wrap = document.querySelector(".content__places");
 const popup = document.querySelector("#popup-place");
-const cardWrap = cardTemplate.querySelector(".card");
 const photoPopup = document.querySelector(".photo");
 
 //hijos
@@ -34,7 +33,6 @@ modalForms.forEach((modalForm) => {
   const formInputs = modalForm.querySelectorAll(validationConfig.inputSelector);
   formInputs.forEach((formInput) => {
     formInput.addEventListener("input", () => {
-      //handleInput(modalForm, formInput, validationConfig.errorClass);
       setEventListeners(modalForm);
     });
   });
@@ -93,9 +91,6 @@ function openModal() {
   jobInput.value = profileDescription.textContent;
   modal.classList.add("modal_is-opened");
 }
-//function closeModal() {
-// modal.classList.remove("modal_is-opened");
-//}
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -125,7 +120,6 @@ function openPopup() {
   nameInput.value = "";
   jobInput.value = "";
   popup.classList.add("modal_is-opened");
-  //updateButtonColor();
 }
 //función del boton cerrar
 function closePopup(popup) {
@@ -171,6 +165,18 @@ const renderCard = (data, wrap) => {
 initialCards.forEach((data) => {
   renderCard(data, wrap);
 });
+//función para cerrar al dar click en el overlay
+function handleOverlayClose(evt) {
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.currentTarget);
+  }
+}
+photoPopup.addEventListener("mousedown", (evt) => {
+  if (evt.target === evt.currentTarget) {
+    photoPopup.classList.remove("photo_is-opened");
+  }
+});
+
 //función para el botón borrar
 function handleDeleteCard(evt) {
   const button = evt.target;
@@ -186,24 +192,14 @@ function handleLikeIcon(evt) {
 document.addEventListener("keydown", handleEscClose);
 profileEditButton.addEventListener("click", openModal);
 popupAddButton.addEventListener("click", openPopup);
-/*popupAddButton.addEventListener("click", () => {
-  openPopup();
-});*/
 modalCloseButton.addEventListener("click", () => {
   closePopup(modal);
 });
-
 popupCloseButton.addEventListener("click", () => {
   closePopup(popup);
 });
-/*document.addEventListener("click", () => {
-  console.log("focusout");
-  closePopup(popup);
-});*/
-
+modal.addEventListener("mousedown", handleOverlayClose);
+popup.addEventListener("mousedown", handleOverlayClose);
 cardForm.addEventListener("submit", handleCardFormSubmit);
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 photoPopupClose.addEventListener("click", photoClose);
-
-//a los botones de los formularios no se les programa el evento submit.
-//se le programa al form como tal para que llame la función submit
