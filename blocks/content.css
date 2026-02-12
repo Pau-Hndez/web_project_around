@@ -70,10 +70,7 @@
 }
 
 .content__places {
-  padding-top: 50px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
-  grid-gap: 20px 17px;
+  width: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -134,13 +131,5 @@
     width: 282px;
     height: 50px;
     margin-top: 36px;
-  }
-
-  .content__places {
-    padding-top: 36px;
-    grid-template-columns: repeat(auto-fit, minmax(282px));
-    grid-gap: 20px;
-    margin: 0;
-    max-width: 282px;
   }
 }
