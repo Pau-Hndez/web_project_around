@@ -26,7 +26,7 @@ const cardForm = document.querySelector("#edit-card-popup");
 const profileForm = document.querySelector("#edit-profile-form");
 const titleInput = document.querySelector("#card-name");
 const pictureInput = document.querySelector("#card-description");
-import { setEventListeners, validationConfig } from "./validity.js";
+import { setEventListeners, validationConfig } from "./validate.js";
 
 const modalForms = document.querySelectorAll(".modal__form");
 modalForms.forEach((modalForm) => {
