@@ -1,73 +1,6 @@
 .content {
   margin: 0 200px;
 }
-.content__profile {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-.content__info {
-  display: flex;
-}
-.content__picture {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-}
-.content__description {
-  display: grid;
-  margin: 22px 165px 21px 30px;
-  grid-template-columns: auto auto;
-  grid-template-rows: auto 1fr;
-  gap: 18px;
-  grid-template-areas: "name button" "about-me about-me";
-}
-.content__name {
-  font-weight: 500;
-  font-size: 42px;
-  line-height: 48px;
-  margin: 0;
-  grid-area: "name";
-  gap: 0;
-}
-.content__edit-button {
-  width: 24px;
-  height: 24px;
-  margin: 15px 0 0 0;
-  background-image: url(../images/Edit\ Button.png);
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-color: black;
-  border-style: none;
-  grid-area: "button";
-}
-.content__edit-button:hover {
-  cursor: pointer;
-  opacity: 60%;
-}
-.content__about-me {
-  font-weight: 400;
-  font-size: 18px;
-  grid-area: "about-me";
-  margin: 0;
-}
-.content__add-button {
-  width: 150px;
-  height: 50px;
-  border-radius: 2px;
-  border-color: #ffffff;
-  background-color: transparent;
-  padding: 14px;
-  margin: 35px 0;
-  display: flex;
-  justify-content: center;
-}
-.content__add-button:hover {
-  cursor: pointer;
-  border-radius: 2px;
-  border-color: #ffffff;
-  opacity: 60%;
-}
 
 .content__places {
   width: 100%;
@@ -77,59 +10,9 @@
   .content {
     margin: 0 19px;
   }
-
-  .content__description {
-    margin: 22px 50px 21px 30px;
-  }
 }
 @media screen and (max-width: 320px) {
   .content {
     margin: 0 19px;
-  }
-  .content__profile {
-    max-width: 282px;
-    height: 286px;
-    display: flex;
-    margin-top: 42px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .content__info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0;
-  }
-  .content__description {
-    column-gap: 14px;
-    justify-content: center;
-    align-items: center;
-    margin: 0;
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: auto 1fr;
-    column-gap: 18px;
-    grid-template-areas: "name button" "about-me about-me";
-  }
-  .content__name {
-    font-size: 22px;
-  }
-  .content__edit-button {
-    width: 18px;
-    height: 18px;
-  }
-  .content__edit-button:hover {
-    width: 18px;
-    height: 18px;
-  }
-  .content__about-me {
-    font-size: 14px;
-    text-align: center;
-  }
-  .content__add-button {
-    width: 282px;
-    height: 50px;
-    margin-top: 36px;
   }
 }
