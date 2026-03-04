@@ -8,19 +8,19 @@ const popup = document.querySelector("#popup-place");
 const photoPopup = document.querySelector(".photo");
 
 //hijos
-const profileTitle = document.querySelector(".content__name");
-const profileDescription = document.querySelector(".content__about-me");
+const profileTitle = document.querySelector(".profile__name");
+const profileDescription = document.querySelector(".profile__about-me");
 const photoBigPopup = photoPopup.querySelector(".photo__big");
 const photoPopupTitle = photoPopup.querySelector(".photo__name");
 const nameInput = document.querySelector(".modal__input_type_name");
 const jobInput = document.querySelector(".modal__input_type_description");
 //buttons
-const profileEditButton = document.querySelector(".content__edit-button");
+const profileEditButton = document.querySelector(".profile__edit-button");
 const modalCloseButton = document.querySelector("#popup-profile-close");
 const saveButton = document.querySelector(".modal__save");
-const popupAddButton = document.querySelector(".content__add-button");
+const popupAddButton = document.querySelector(".profile__add-button");
 const popupCloseButton = document.querySelector("#popup-place-close");
-const popupSaveButton = document.querySelector(".popup__save");
+const popupSaveButton = popup.querySelector(".modal__form");
 const photoPopupClose = document.querySelector(".photo__close");
 const cardForm = document.querySelector("#edit-card-popup");
 const profileForm = document.querySelector("#edit-profile-form");
@@ -139,7 +139,7 @@ function handleCardFormSubmit(evt) {
 
   renderCard(newCard, wrap);
   closePopup(popup);
-  popupSaveButton.reset();
+  cardForm.reset();
 }
 //función para que se cierre con la tecla ESC
 function handleEscClose(evt) {
