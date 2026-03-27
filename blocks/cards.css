@@ -1,12 +1,11 @@
-.cards {
+.cards__list {
   padding-top: 50px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
   grid-gap: 20px 17px;
 }
-
 @media screen and (max-width: 320px) {
-  .cards {
+  .cards__list {
     padding-top: 36px;
     grid-template-columns: repeat(auto-fit, minmax(282px));
     grid-gap: 20px;

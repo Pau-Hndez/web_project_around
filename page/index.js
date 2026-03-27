@@ -33,11 +33,11 @@ const initialCards = [
 ];
 
 const validationConfig = {
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__save",
-  inactiveButtonClass: "modal__save_inactive",
-  inputErrorClass: "modal__input:invalid",
-  errorClass: ".modal__input-error",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_inactive",
+  inputErrorClass: "popup__input:invalid",
+  errorClass: ".popup__input-error",
 };
 
 // --- Instancias ---
@@ -49,16 +49,10 @@ const userInfo = new UserInfo({
 });
 
 // 2. Popup de Imagen
-const imagePopup = new PopupWithImage(".photo");
+const imagePopup = new PopupWithImage("#popup_image");
 imagePopup.setEventListeners();
 
 // 3. Función para crear tarjetas (reutilizable)
-const createCard = (data) => {
-  const card = new Card(data, "#card__template", (name, link) => {
-    imagePopup.open(name, link);
-  });
-  return card.generateCard();
-};
 
 // 4. Sección de Tarjetas
 const cardSection = new Section(
@@ -71,6 +65,13 @@ const cardSection = new Section(
   },
   ".cards__list",
 );
+
+const createCard = (data) => {
+  const card = new Card(data, "#card__template", (name, link) => {
+    imagePopup.open(name, link);
+  });
+  return card.generateCard();
+};
 
 cardSection.renderItems();
 
@@ -99,6 +100,7 @@ document
     document.querySelector("#name-input").value = name;
     document.querySelector("#description-input").value = about;
     profilePopup.open();
+    console.log("click profile popup");
   });
 
 document.querySelector(".profile__add-button").addEventListener("click", () => {

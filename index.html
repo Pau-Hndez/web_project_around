@@ -63,19 +63,19 @@
       </main>
       <footer class="footer">© 2024 Around The U.S.</footer>
     </div>
-    <div class="modal" id="popup-profile">
-      <div class="modal__content">
+    <div class="popup" id="popup-profile">
+      <div class="popup__content">
         <button
-          aria-label="close modal"
-          class="modal__close"
+          aria-label="close popup"
+          class="popup__close"
           type="button"
           id="popup-profile-close"
         ></button>
-        <h3 class="modal__title">Editar perfil</h3>
-        <form class="modal__form" id="edit-profile-form" novalidate>
+        <h3 class="popup__title">Editar perfil</h3>
+        <form class="popup__form" id="edit-profile-form" novalidate>
           <input
             id="name-input"
-            class="modal__input modal__input_type_name"
+            class="popup__input popup__input_type_name"
             name="name"
             placeholder="Nombre"
             type="text"
@@ -83,10 +83,10 @@
             minlength="2"
             maxlength="40"
           />
-          <span class="modal__input-error name-input-error"></span>
+          <span class="popup__input-error name-input-error"></span>
           <input
             id="description-input"
-            class="modal__input modal__input_type_description"
+            class="popup__input popup__input_type_description"
             name="description"
             placeholder="Acerca de mí"
             type="text"
@@ -94,24 +94,24 @@
             minlength="2"
             maxlength="200"
           />
-          <span class="modal__input-error description-input-error"></span>
-          <button class="modal__save" type="submit" disabled>Guardar</button>
+          <span class="popup__input-error description-input-error"></span>
+          <button class="popup__save" type="submit" disabled>Guardar</button>
         </form>
       </div>
     </div>
-    <div class="modal" id="popup-place">
-      <div class="modal__content">
+    <div class="popup" id="popup-place">
+      <div class="popup__content">
         <button
           aria-label="close popup"
-          class="modal__close"
+          class="popup__close"
           type="button"
           id="popup-place-close"
         ></button>
-        <h3 class="modal__title">Nuevo lugar</h3>
-        <form class="modal__form" id="edit-card-popup" novalidate>
+        <h3 class="popup__title">Nuevo lugar</h3>
+        <form class="popup__form" id="edit-card-popup" novalidate>
           <input
             id="card-name"
-            class="modal__input modal__input_type_name"
+            class="popup__input popup__input_type_name"
             name="title"
             placeholder="Título"
             type="text"
@@ -119,29 +119,29 @@
             minlength="2"
             maxlength="30"
           />
-          <span class="modal__input-error card-name-error"></span>
+          <span class="popup__input-error card-name-error"></span>
           <input
             id="card-description"
-            class="modal__input modal__input_type_description"
+            class="popup__input popup__input_type_description"
             name="picture"
             placeholder="Enlace a la imagen."
             type="url"
             required
           />
-          <span class="modal__input-error card-description-error"></span>
-          <button class="modal__save" type="submit">Crear</button>
+          <span class="popup__input-error card-description-error"></span>
+          <button class="popup__save" type="submit">Crear</button>
         </form>
       </div>
     </div>
-    <div class="photo">
-      <div class="photo__display">
+    <div class="popup" id="popup_image">
+      <div class="popup__image-content">
         <button
           aria-label="close popup"
-          class="photo__close"
+          class="popup__close"
           type="button"
         ></button>
-        <img class="photo__big" alt="" src="#" />
-        <p class="photo__name"></p>
+        <img class="popup__image-big" alt="" src="#" />
+        <p class="popup__image-name"></p>
       </div>
     </div>
     <script type="module" src="./page/index.js"></script>

@@ -86,7 +86,23 @@
   box-shadow: none;
   cursor: pointer;
 }
-
+.popup__input-error {
+  font-weight: 220;
+  font-size: 12px;
+  background-color: #ffffff;
+  color: #ff0000;
+  font-family: "Inter";
+}
+.popup__image-name {
+  font-weight: 400;
+  font-size: 12px;
+  color: #ffffff;
+}
+.popup__image-content {
+  max-width: auto;
+  position: relative;
+  font-family: "Inter";
+}
 @media screen and (max-width: 320px) {
   .popup__content {
     max-width: 282px;
