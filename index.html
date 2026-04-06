@@ -24,11 +24,14 @@
       <main class="content">
         <section class="profile">
           <div class="profile__info">
-            <img
-              class="profile__picture"
-              src="./images/profile_picture.jpg"
-              alt="Foto de perfil"
-            />
+            <div class="profile__picture">
+              <img
+                class="profile__img-picture"
+                src="./images/profile_picture.jpg"
+                alt="Foto de perfil"
+              />
+              <button class="profile__edit-picture"></button>
+            </div>
             <div class="profile__description">
               <h1 class="profile__name">Jacques Cousteau</h1>
               <button class="profile__edit-button" type="button"></button>
@@ -142,6 +145,40 @@
         ></button>
         <img class="popup__image-big" alt="" src="#" />
         <p class="popup__image-name"></p>
+      </div>
+    </div>
+    <div class="popup" id="popup_delete">
+      <div class="popup__image-content">
+        <button
+          aria-label="close popup"
+          class="popup__close"
+          type="button"
+        ></button>
+        <h3 class="popup__title">¿Estás seguro?</h3>
+        <button class="popup__save" type="submit">Sí</button>
+      </div>
+    </div>
+    <div class="popup" id="popup-place">
+      <div class="popup__content">
+        <button
+          aria-label="close popup"
+          class="popup__close"
+          type="button"
+          id="popup-place-close"
+        ></button>
+        <h3 class="popup__title">Cambiar foto de perfil</h3>
+        <form class="popup__form" id="edit-profile-picture" novalidate>
+          <input
+            id="card-description"
+            class="popup__input popup__input_type_description"
+            name="picture"
+            placeholder="Enlace a la imagen."
+            type="url"
+            required
+          />
+          <span class="popup__input-error card-description-error"></span>
+          <button class="popup__save" type="submit">Guardar</button>
+        </form>
       </div>
     </div>
     <script type="module" src="./page/index.js"></script>

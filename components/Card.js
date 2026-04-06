@@ -28,7 +28,6 @@ export class Card {
       this._handleDeleteClick(),
     );
     this._image.addEventListener("click", () => {
-      console.log("click imagen");
       this._handleCardClick(this._name, this._link);
     });
   }

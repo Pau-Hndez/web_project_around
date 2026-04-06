@@ -136,4 +136,9 @@
     width: 238px;
     height: 46px;
   }
+  .popup__image-content {
+    max-width: 240px;
+    width: 100%;
+    height: 299px;
+  }
 }

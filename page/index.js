@@ -4,6 +4,19 @@ import Section from "../components/Section.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import UserInfo from "../components/UserInfo.js";
+import Api from "../components/Api.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+
+const api = new Api({
+  baseUrl: "https://around-api.es.tripleten-services.com/v1",
+  headers: {
+    authorization: "0f55971b-c059-4ebb-9b77-a79df8314408",
+    "Content-Type": "application/json",
+  },
+});
+/*
+api.getInitialCards();
+
 
 const initialCards = [
   {
@@ -31,7 +44,7 @@ const initialCards = [
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
   },
 ];
-
+*/
 const validationConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save",
@@ -52,9 +65,8 @@ const userInfo = new UserInfo({
 const imagePopup = new PopupWithImage("#popup_image");
 imagePopup.setEventListeners();
 
-// 3. Función para crear tarjetas (reutilizable)
-
-// 4. Sección de Tarjetas
+let initialCards = [];
+// 3. Función para crear tarjetas
 const cardSection = new Section(
   {
     items: initialCards,
@@ -65,6 +77,11 @@ const cardSection = new Section(
   },
   ".cards__list",
 );
+// 4. Sección de Tarjetas
+api.getInitialCards().then((response) => {
+  initialCards.push(...response);
+  cardSection.renderItems();
+});
 
 const createCard = (data) => {
   const card = new Card(data, "#card__template", (name, link) => {
@@ -72,8 +89,6 @@ const createCard = (data) => {
   });
   return card.generateCard();
 };
-
-cardSection.renderItems();
 
 // 5. Popup Formulario Perfil
 const profilePopup = new PopupWithForm("#popup-profile", (data) => {
@@ -84,13 +99,22 @@ profilePopup.setEventListeners();
 
 // 6. Popup Formulario Nuevo Lugar
 const placePopup = new PopupWithForm("#popup-place", (data) => {
-  // data viene con 'title' y 'picture' según los names de los inputs en el HTML
-  const newCardElement = createCard({ name: data.title, link: data.picture });
-  cardSection.addItem(newCardElement);
-  placePopup.close();
+  api.addCard(data.title, data.picture).then(() => {
+    const newCardElement = createCard({ name: data.title, link: data.picture });
+    cardSection.addItem(newCardElement);
+    placePopup.close();
+  });
 });
 placePopup.setEventListeners();
 
+// 7. Popup para confirmar borrar tarjeta
+const confirmationPopup = new PopupWithConfirmation("#popup_delete", (data) => {
+  api.deleteCard(cardId).then(() => {
+    data.remove();
+    confirmationPopup.close();
+  });
+});
+confirmationPopup.setEventListeners();
 // --- Event Listeners de Botones ---
 
 document
@@ -100,7 +124,6 @@ document
     document.querySelector("#name-input").value = name;
     document.querySelector("#description-input").value = about;
     profilePopup.open();
-    console.log("click profile popup");
   });
 
 document.querySelector(".profile__add-button").addEventListener("click", () => {

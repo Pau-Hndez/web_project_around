@@ -7,9 +7,33 @@
   display: flex;
 }
 .profile__picture {
+  position: relative;
+  display: inline-block;
+}
+.profile__img-picture {
+  display: block;
   width: 120px;
   height: 120px;
   border-radius: 50%;
+}
+.profile__edit-picture {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  opacity: 0;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.profile__edit-picture:hover {
+  background-image: url(../images/Edit\ button\ picture.png);
+  background-color: black;
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  opacity: 80%;
+  border-style: none;
 }
 .profile__description {
   display: grid;
