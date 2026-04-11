@@ -14,37 +14,7 @@ const api = new Api({
     "Content-Type": "application/json",
   },
 });
-/*
-api.getInitialCards();
 
-
-const initialCards = [
-  {
-    name: "Valle de Yosemite",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
-  },
-  {
-    name: "Lago Louise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lake-louise.jpg",
-  },
-  {
-    name: "Montañas Calvas",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/bald-mountains.jpg",
-  },
-  {
-    name: "Latemar",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/latemar.jpg",
-  },
-  {
-    name: "Parque Nacional de la Vanoise",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/vanoise.jpg",
-  },
-  {
-    name: "Lago di Braies",
-    link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg",
-  },
-];
-*/
 const validationConfig = {
   inputSelector: ".popup__input",
   submitButtonSelector: ".popup__save",
@@ -59,6 +29,7 @@ const validationConfig = {
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   aboutSelector: ".profile__about-me",
+  avatarSelector: ".profile__img-picture",
 });
 
 // 2. Popup de Imagen
@@ -67,6 +38,47 @@ imagePopup.setEventListeners();
 
 let initialCards = [];
 // 3. Función para crear tarjetas
+const createCard = (data) => {
+  const card = new Card(
+    data,
+    "#card__template",
+    (name, link) => {
+      imagePopup.open(name, link);
+    },
+    (cardInstance) => {
+      // LIKE
+      api
+        .addLike(cardInstance._id)
+        .then((res) => {
+          cardInstance._updateLikes(res);
+        })
+        .catch(console.error);
+    },
+    (cardInstance) => {
+      // DISLIKE
+      api
+        .removeLike(cardInstance._id)
+        .then((res) => {
+          cardInstance._updateLikes(res);
+        })
+        .catch(console.error);
+    },
+    (card) => {
+      // DELETE (el que ya tienes)
+      confirmationPopup.open();
+      confirmationPopup.setSubmitAction(() => {
+        api
+          .deleteCard(card._id)
+          .then(() => {
+            card.removeCard();
+            confirmationPopup.close();
+          })
+          .catch(console.error);
+      });
+    },
+  );
+  return card.generateCard();
+};
 const cardSection = new Section(
   {
     items: initialCards,
@@ -82,18 +94,25 @@ api.getInitialCards().then((response) => {
   initialCards.push(...response);
   cardSection.renderItems();
 });
+api.getUserInfo().then((data) => {
+  userInfo.setUserInfo(data);
+  userInfo.setUserAvatar(data.avatar);
+});
 
-const createCard = (data) => {
-  const card = new Card(data, "#card__template", (name, link) => {
-    imagePopup.open(name, link);
-  });
-  return card.generateCard();
-};
+// 7. Popup para confirmar borrar tarjeta
+const confirmationPopup = new PopupWithConfirmation("#popup_delete");
+
+confirmationPopup.setEventListeners();
 
 // 5. Popup Formulario Perfil
 const profilePopup = new PopupWithForm("#popup-profile", (data) => {
-  userInfo.setUserInfo(data);
-  profilePopup.close();
+  api.editProfile(data.name, data.about).then(() => {
+    userInfo.setUserInfo({
+      name: data.name,
+      about: data.description,
+    });
+    profilePopup.close();
+  });
 });
 profilePopup.setEventListeners();
 
@@ -107,15 +126,23 @@ const placePopup = new PopupWithForm("#popup-place", (data) => {
 });
 placePopup.setEventListeners();
 
-// 7. Popup para confirmar borrar tarjeta
-const confirmationPopup = new PopupWithConfirmation("#popup_delete", (data) => {
-  api.deleteCard(cardId).then(() => {
-    data.remove();
-    confirmationPopup.close();
-  });
+// 8. Popup formulario foto de perfil
+
+const picturePopup = new PopupWithForm("#popup-profile-picture", (data) => {
+  api
+    .editProfilePicture({ avatar: data.avatar })
+    .then((res) => {
+      userInfo.setUserAvatar(res.avatar);
+      picturePopup.close();
+    })
+    .catch(console.error);
 });
-confirmationPopup.setEventListeners();
+picturePopup.setEventListeners();
+
 // --- Event Listeners de Botones ---
+document.querySelector(".profile__add-button").addEventListener("click", () => {
+  placePopup.open();
+});
 
 document
   .querySelector(".profile__edit-button")
@@ -126,9 +153,11 @@ document
     profilePopup.open();
   });
 
-document.querySelector(".profile__add-button").addEventListener("click", () => {
-  placePopup.open();
-});
+document
+  .querySelector(".profile__edit-picture")
+  .addEventListener("click", () => {
+    picturePopup.open();
+  });
 
 // --- Validación ---
 const profileValidator = new FormValidator(

@@ -19,6 +19,23 @@ export default class Api {
         console.log(err);
       });
   }
+  async getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "GET",
+      headers: {
+        ...this._headers,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   //3.
   async editProfile(name, about) {
     return fetch(`${this._baseUrl}/users/me`, {
@@ -80,8 +97,8 @@ export default class Api {
       .catch((err) => console.log(err));
   }
   //8.
-  async addLike() {
-    return fetch(`${this._baseUrl}/cards/${cardId}/like`, {
+  async addLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
       method: "PUT",
       headers: {
         ...this._headers,
@@ -101,5 +118,25 @@ export default class Api {
       if (res.ok) return res.json();
       return Promise.reject(`Error: ${res.status}`);
     });
+  }
+  // 9.
+  async editProfilePicture({ avatar }) {
+    console.log(avatar);
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: {
+        ...this._headers,
+      },
+      body: JSON.stringify({
+        avatar,
+      }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => console.log(err));
   }
 }

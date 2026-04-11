@@ -137,7 +137,7 @@
       </div>
     </div>
     <div class="popup" id="popup_image">
-      <div class="popup__image-content">
+      <div class="popup__image-card">
         <button
           aria-label="close popup"
           class="popup__close"
@@ -155,23 +155,30 @@
           type="button"
         ></button>
         <h3 class="popup__title">¿Estás seguro?</h3>
-        <button class="popup__save" type="submit">Sí</button>
+        <form
+          class="popup__form"
+          name="confirm-form"
+          id="remove-card-form"
+          novalidate
+        >
+          <button type="submit" class="popup__save">Si</button>
+        </form>
       </div>
     </div>
-    <div class="popup" id="popup-place">
+    <div class="popup" id="popup-profile-picture">
       <div class="popup__content">
         <button
           aria-label="close popup"
           class="popup__close"
           type="button"
-          id="popup-place-close"
+          id="popup-profile-picture-close"
         ></button>
         <h3 class="popup__title">Cambiar foto de perfil</h3>
         <form class="popup__form" id="edit-profile-picture" novalidate>
           <input
             id="card-description"
             class="popup__input popup__input_type_description"
-            name="picture"
+            name="avatar"
             placeholder="Enlace a la imagen."
             type="url"
             required
